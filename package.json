@@ -1,0 +1,45 @@
+{
+  "name": "nikko",
+  "description": "Nikko, the Winged Monkey King. Also a node port of toto.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/goliatone/nikko",
+  "author": {
+    "name": "goliatone",
+    "email": "hello@goliatone.com",
+    "url": "http://goliatone.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goliatone/nikko.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goliatone/nikko/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/goliatone/nikko/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt": "~0.4.5"
+  },
+  "keywords": [],
+  "dependencies": {
+    "front-matter": "^1.0.0",
+    "grunt-cli": "^0.1.13",
+    "gextend": "^0.1.6",
+    "lbr": "0.0.2",
+    "metalsmith-each": "^0.1.0"
+  }
+}
