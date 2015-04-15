@@ -21,6 +21,9 @@
       "url": "https://github.com/goliatone/nikko/blob/master/LICENSE-MIT"
     }
   ],
+  "bin": {
+    "nikko": "bin/nikko"
+  },
   "main": "index.js",
   "engines": {
     "node": ">= 0.10.0"
@@ -40,6 +43,8 @@
     "grunt-cli": "^0.1.13",
     "gextend": "^0.1.6",
     "lbr": "0.0.2",
-    "metalsmith-each": "^0.1.0"
+    "metalsmith-each": "^0.1.0",
+    "commander": "^2.8.0",
+    "chalk": "^1.0.0"
   }
 }
