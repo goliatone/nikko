@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+
+
+/**
+ * Dependencies
+ */
+var chalk = require('chalk');
+
+var nikko = require('..');
+var program = require('commander');
+
+
+
+/**
+ * Usage
+ */
+program.version(require('../package.json').version)
+    .command('new [name]', 'Create new')
+    .command('serve', 'Serve')
+    .command('build', 'Build')
+    .command('publish', 'Publish the package')
+    .command('install', 'Install plugin')
+    .option('-c, --config <path>', 'configuration file location', 'librarian.json');
+
+
+/**
+ * Examples
+ */
+program.on('--help', function(){
+    console.log('\tExamples:');
+    console.log();
+    console.log('\t\t#build from librarian.json:');
+    console.log('\t\t$ lbr');
+    console.log();
+    console.log('\t\t#build from lib/config.json:');
+    console.log('\t\t$ lbr --config lib/config.json');
+    console.log();
+});
+
+/**
+ * Parse
+ */
+program.parse(process.argv);
+
+
+/////////////////////////////////////////////////////////////////
+/// HELPER METHODS
+/////////////////////////////////////////////////////////////////
+
+function fatal(msg, stack){
+    console.error();
+    console.error(chalk.red('\tLibrarian') + chalk.gray(': ') + msg);
+    if(stack){
+        console.error();
+        console.error(chalk.gray(stack));
+    }
+    console.error();
+    process.exit(1);
+}
+
+function log(msg){
+    console.log();
+    console.log(chalk.gray('\tLibrarian: ') + msg);
+    console.log();
+}
