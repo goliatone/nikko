@@ -10,12 +10,12 @@ var nikko = require('..');
 var program = require('commander');
 
 
-
 /**
  * Usage
  */
 program.version(require('../package.json').version)
-    .command('new [name]', 'Create new')
+    .command('create [name]', 'Create new blog')
+    .command('new [name]', 'Create new post')
     .command('serve', 'Serve')
     .command('build', 'Build')
     .command('publish', 'Publish the package')
