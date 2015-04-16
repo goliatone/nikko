@@ -1,21 +1,17 @@
 #!/usr/bin/env node
 
 var program = require('commander');
+var server = require('../lib/nikko-serve');
 
 program
-  .option('-f, --force', 'force installation')
+  .option('-p, --port [port]', 'Server port', 3000)
+  .option('-w, --watch', 'Reload on changes')
+  .option('-o, --open', 'Open browser', true)
+  .option('-d, --directory [directory]', 'Serve directory', process.env.PWD)
   .parse(process.argv);
 
-var pkgs = program.args;
-
-if (!pkgs.length) {
-  console.error('packages required');
-  process.exit(1);
-}
-
-console.log();
-if (program.force) console.log('  force: install');
-pkgs.forEach(function(pkg){
-  console.log('  install : %s', pkg);
+server({
+    port: program.port,
+    watch: program.watch,
+    directory: program.directory
 });
-console.log();
