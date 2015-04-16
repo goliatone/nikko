@@ -1,0 +1,57 @@
+{
+  "name": "goliatone.com",
+  "description": "goliatone.com",
+  "version": "0.0.1",
+  "homepage": "https://github.com/goliatone/goliatone.com",
+  "author": {
+    "name": "goliatone",
+    "email": "hello@goliatone.com",
+    "url": "http://goliatone.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goliatone/goliatone.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goliatone/goliatone.com/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/goliatone/goliatone.com/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "build.js",
+  "dependencies": {
+    "lbr": "0.0.2",
+    "metalsmith-collections": "^0.7.0",
+    "metalsmith-tags": "0.6.1",
+    "underscore": "^1.8.2",
+    "slug-component": "^1.1.0",
+    "moment": "^2.9.0",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-permalinks": "^0.4.0",
+    "metalsmith-templates": "^0.6.1",
+    "handlebars": "^3.0.0",
+    "glob": "^5.0.3",
+    "metalsmith-define": "^1.0.0",
+    "metalsmith-each": "^0.1.0",
+    "metalsmith-snippet": "^1.0.1",
+    "metalsmith-assets": "^0.1.0",
+    "metalsmith-clean-css": "^2.0.0",
+    "grunt-cli": "^0.1.13",
+    "gextend": "^0.1.6",
+    "watch": "^0.14.0",
+    "metalsmith-serve": "0.0.3",
+    "metalsmith-watch": "^0.2.0",
+    "metalsmith-external-watch": "^0.1.1",
+    "highlight.js": "^8.4.0",
+    "metalsmith-gzip": "^1.0.0",
+    "moment-timezone": "^0.3.1",
+    "globby": "^1.2.0",
+    "metalsmith-html-minifier": "^1.1.0",
+    "metalsmith-imagemin": "0.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {}
+}
