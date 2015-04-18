@@ -1,21 +1,16 @@
 #!/usr/bin/env node
 
 var program = require('commander');
+var build = require('../lib/nikko-build');
 
 program
   .option('-f, --force', 'force build')
+  .option('-s, --source [directory]', 'Source directory')
   .parse(process.argv);
 
-var pkgs = program.args;
-
-if (!pkgs.length) {
-  console.error('packages required');
-  process.exit(1);
-}
-
-console.log();
-if (program.force) console.log('  force: install');
-pkgs.forEach(function(pkg){
-  console.log('  install : %s', pkg);
+// https://github.com/lelandmiller/metalsmith-external-watch/blob/master/index.js
+// https://github.com/queckezz/watch-run/blob/master/bin/watch
+build({
+    force: program.force,
+    source: program.source
 });
-console.log();
