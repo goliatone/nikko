@@ -39,12 +39,19 @@
   },
   "keywords": [],
   "dependencies": {
+    "chalk": "^1.0.0",
+    "commander": "^2.8.0",
+    "empty-dir": "^0.1.0",
     "front-matter": "^1.0.0",
-    "grunt-cli": "^0.1.13",
+    "fs-extra": "^0.18.0",
     "gextend": "^0.1.6",
+    "grunt-cli": "^0.1.13",
     "lbr": "0.0.2",
     "metalsmith-each": "^0.1.0",
-    "commander": "^2.8.0",
-    "chalk": "^1.0.0"
+    "flic": "^1.1.2",
+    "open": "0.0.5",
+    "connect": "^3.3.5",
+    "serve-index": "^1.6.3",
+    "instant": "git+ssh://git@github.com/goliatone/instant.git"
   }
 }
