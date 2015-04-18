@@ -52,6 +52,6 @@
     "open": "0.0.5",
     "connect": "^3.3.5",
     "serve-index": "^1.6.3",
-    "instant": "git+ssh://git@github.com/goliatone/instant.git"
+    "instant": "goliatone/instant.git#3d26e2d"
   }
 }
