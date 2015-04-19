@@ -1,21 +1,26 @@
 #!/usr/bin/env node
 
 var program = require('commander');
+var nikkoNew = require('../lib/nikko-new');
 
+/*
+ * TODO: We should have a context
+ * providing things like: if we are on a
+ * nikko project directory, then we know where
+ * the generated files should go.
+ */
 program
-  .option('-f, --force', 'force installation')
+  .option('-t, --template <template>', 'force installation', 'post')
+  .option('-i, --interactive', 'Interactive data generation')
+  .option('-d, --data-path <path>', 'Path to data file')
+  .option('-f, --force', 'Overwrite a file that exists with same name')
+  .option('-o, --output-path <path>', 'Output path', process.env.PWD)
   .parse(process.argv);
 
-var pkgs = program.args;
-
-if (!pkgs.length) {
-  console.error('packages required');
-  process.exit(1);
-}
-
-console.log();
-if (program.force) console.log('  force: install');
-pkgs.forEach(function(pkg){
-  console.log('  install : %s', pkg);
+nikkoNew({
+    template: program.template,
+    interactive: program.interactive,
+    data: program.dataPath,
+    force: program.force,
+    output: program.outputPath
 });
-console.log();
