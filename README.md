@@ -12,13 +12,24 @@ _(Coming soon)_
 _(Coming soon)_
 
 ## Todo
-create
-new
+
+Commands:
+create => new
+new => generate
 build
 serve
 install
 publish
 
+Commands should have a post hook, chain. If we create new, we should build after.
+
+nikko:
+- It should load configuration.
+- It should build context.
+    - We should be able to know if we are on a nikko project dir
+    - When we create a new project, we want to collect metadata.
+- It should start a new IPC server, Unix socket, `/tmp/nikko.<project>.sock`
+- We should be able to trigger commands using the server
 
 
 ## Contributing
