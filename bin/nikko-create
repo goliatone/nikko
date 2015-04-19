@@ -1,5 +1,16 @@
 #!/usr/bin/env node
 
+/**
+ * Create command:
+ * - It should notify main process after the
+ * project is created so that we can generate
+ * project metadata.
+ * - It should take interactive input to collect
+ * blog meta, like author name, blog name, title,
+ * description, etc.
+ */
+
+
 // https://www.npmjs.com/package/promptly
 // https://github.com/SBoudrias/Inquirer.js
 var program = require('commander');
@@ -11,9 +22,14 @@ program
   .option('-f, --force', 'Force to create on non empty dir')
   .parse(process.argv);
 
+
 var name = program.args;
-if(name) name = name[0];
-else name = ''; //TODO: Make required!!
+name = name[0];
+if(!name) {
+    console.log('A project name is required:');
+    console.log('  $ nikko create my_blog');
+    process.exit(1);
+}
 
 create({
     name: name,
