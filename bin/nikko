@@ -29,11 +29,11 @@ program.version(require('../package.json').version)
 program.on('--help', function(){
     console.log('\tExamples:');
     console.log();
-    console.log('\t\t#build from librarian.json:');
-    console.log('\t\t$ lbr');
+    console.log('\t#build from librarian.json:');
+    console.log('\t$ lbr');
     console.log();
-    console.log('\t\t#build from lib/config.json:');
-    console.log('\t\t$ lbr --config lib/config.json');
+    console.log('\t#build from lib/config.json:');
+    console.log('\t$ nikko build --config lib/config.json');
     console.log();
 });
 
