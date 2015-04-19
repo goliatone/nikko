@@ -52,6 +52,8 @@
     "open": "0.0.5",
     "connect": "^3.3.5",
     "serve-index": "^1.6.3",
-    "instant": "goliatone/instant.git#3d26e2d"
+    "instant": "goliatone/instant.git#3d26e2d",
+    "inquirer": "^0.8.2",
+    "handlebars": "^3.0.1"
   }
 }
