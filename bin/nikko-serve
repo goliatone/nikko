@@ -5,7 +5,8 @@ var server = require('../lib/nikko-serve');
 
 program
   .option('-p, --port [port]', 'Server port', 3000)
-  .option('-w, --watch', 'Reload on changes')
+  .option('-w, --watch <directory>', 'Source directory')
+  .option('-e, --exec <directory>', 'Execute command on watch change')
   .option('-o, --open', 'Open browser')
   .option('-d, --directory [directory]', 'Serve directory', process.env.PWD)
   .parse(process.argv);
@@ -14,5 +15,6 @@ server({
     port: program.port,
     open: program.open,
     watch: program.watch,
+    exec: program.exec,
     directory: program.directory
 });
