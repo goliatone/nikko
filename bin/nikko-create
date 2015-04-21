@@ -8,6 +8,9 @@
  * - It should take interactive input to collect
  * blog meta, like author name, blog name, title,
  * description, etc.
+ * - Refactor structure for blueprints:
+ *     - questions.js => interactive
+ *     - template/ => all content
  */
 
 
