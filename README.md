@@ -50,6 +50,13 @@ We should be able to config rc
 
 TODO: move commands to plugins directory instead of lib
 
+## Blueprints
+Skeleton of a site, which content is compiled against generating the static output.
+
+## Themes
+How do we decouple themes from blueprints? We should be able to install both independently.
+
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
