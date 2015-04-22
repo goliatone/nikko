@@ -8,6 +8,10 @@ var nikkoNew = require('../lib/nikko-new');
  * providing things like: if we are on a
  * nikko project directory, then we know where
  * the generated files should go.
+ *
+ * TODO: We should be able to execute command after
+ * creation:
+ * nikko -i -o /tmp/src -e "subl {path}" <= exec templates
  */
 program
   .option('-t, --template <template>', 'force installation', 'post')
@@ -15,8 +19,10 @@ program
   .option('-d, --data-path <path>', 'Path to data file')
   .option('-f, --force', 'Overwrite a file that exists with same name')
   .option('-o, --output-path <path>', 'Output path', process.env.PWD)
+  .option('-e, --exec <command>', 'Execute command after')
   .parse(process.argv);
 
+// nikko new -i -o /tmp/nikko.com/src/_posts/
 nikkoNew({
     template: program.template,
     interactive: program.interactive,
