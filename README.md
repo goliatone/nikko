@@ -6,7 +6,18 @@ Nikko, the Winged Monkey King. Also a node port of toto.
 Install the module with: `npm install nikko -g`
 
 ## Documentation
-_(Coming soon)_
+
+`$ nikko create <name>`
+Generates a blog using the `default` blueprint. It will us the current directory. Once created it will also create a local `.nikkorc` and add the project to the a list of projects in `~/.nikko/projects`.
+
+After it has generated all files, it will call build.
+
+`$ nikko build`
+Compiles the templates and generates a static site. It uses `librarian` by default. The blueprint contains a `librarian.json` file that manages the build process. It uses a set of default parameters, stored in the `.nikkorc` that provided we are calling commands from the project directory it all should work.
+If not, we should specify the project's name|id.
+
+`$nikko serve`
+Serves a preview site on port **9393** by default. It will watch the **src** directory and trigger builds when source files change, which in turn trigger a **live reload** event.
 
 ## Examples
 _(Coming soon)_
@@ -21,7 +32,8 @@ serve
 install
 publish
 
-Commands should have a post hook, chain. If we create new, we should build after.
+* Commands should have a post hook, chain. If we create new, we should build after.
+* Commands should be installable via `npm`. 
 
 nikko:
 - It should load configuration.
@@ -31,6 +43,12 @@ nikko:
 - It should start a new IPC server, Unix socket, `/tmp/nikko.<project>.sock`
 - We should be able to trigger commands using the server
 
+
+We should be able to list all projects locally
+
+We should be able to config rc
+
+TODO: move commands to plugins directory instead of lib
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
