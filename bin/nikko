@@ -20,6 +20,7 @@ program.version(require('../package.json').version)
     .command('build', 'Build')
     .command('publish', 'Publish the package')
     .command('install', 'Install plugin')
+    .command('list', 'List plugin')
     .option('-c, --config <path>', 'configuration file location', 'librarian.json');
 
 
