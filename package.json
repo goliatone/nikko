@@ -43,7 +43,7 @@
     "commander": "^2.8.0",
     "empty-dir": "^0.1.0",
     "front-matter": "^1.0.0",
-    "fs-extra": "^0.18.0",
+    "fs-extra": "^0.18.2",
     "gextend": "^0.1.6",
     "grunt-cli": "^0.1.13",
     "lbr": "0.0.2",
@@ -55,6 +55,8 @@
     "instant": "goliatone/instant.git#3d26e2d",
     "inquirer": "^0.8.2",
     "handlebars": "^3.0.1",
-    "gaze": "^0.5.1"
+    "gaze": "^0.5.1",
+    "rc": "^1.0.1",
+    "npmi": "^1.0.1"
   }
 }
