@@ -3,6 +3,6 @@
 'use strict';
 
 if (true) {
-  let info = 'publish';
+  var info = 'publish';
   console.log(info)
 }
