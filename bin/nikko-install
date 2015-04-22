@@ -13,9 +13,9 @@ if (!pkgs.length) {
   process.exit(1);
 }
 
-console.log();
-if (program.force) console.log('  force: install');
-pkgs.forEach(function(pkg){
-  console.log('  install : %s', pkg);
+//TODO: we could create this dynamically? Or process the content
+//and change it with regexp so that it works also as standalone?
+var nikko = require('../lib');
+nikko.execute('install', {
+    packages: pkgs
 });
-console.log();
