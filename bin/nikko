@@ -9,20 +9,31 @@ var chalk = require('chalk');
 var nikko = require('..');
 var program = require('commander');
 
+var pkg = require('../package.json');
+
+var plugins = {
+    "plugins":[
+        {"name": 'create', "description": ['create [name]', 'Create new blog']},
+        {"name": 'new', "description":['new [name]', 'Create new post']},
+        {"name": 'serve', "description":['serve', 'Serve']},
+        {"name": 'build', "description":['build', 'Build']},
+        {"name": 'publish', "description":['publish', 'Publish the package']},
+        {"name": 'install', "description":['install', 'Install plugin']},
+        {"name": 'list', "description":['list', 'List plugin']}
+    ]
+};
 
 /**
  * Usage
  */
-program.version(require('../package.json').version)
-    .command('create [name]', 'Create new blog')
-    .command('new [name]', 'Create new post')
-    .command('serve', 'Serve')
-    .command('build', 'Build')
-    .command('publish', 'Publish the package')
-    .command('install', 'Install plugin')
-    .command('list', 'List plugin')
-    .option('-c, --config <path>', 'configuration file location', 'librarian.json');
+program.version(pkg.version);
 
+plugins.plugins.forEach(function(plg){
+    var command = plg.description;
+    program.command.apply(program, command);
+});
+
+program.option('-c, --config <path>', 'configuration file location', 'librarian.json');
 
 /**
  * Examples
