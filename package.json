@@ -57,6 +57,8 @@
     "handlebars": "^3.0.1",
     "gaze": "^0.5.1",
     "rc": "^1.0.1",
-    "npmi": "^1.0.1"
+    "npmi": "^1.0.1",
+    "readjson": "^1.0.2",
+    "read-package-json": "^2.0.0"
   }
 }
