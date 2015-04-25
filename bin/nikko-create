@@ -17,7 +17,7 @@
 // https://www.npmjs.com/package/promptly
 // https://github.com/SBoudrias/Inquirer.js
 var program = require('commander');
-var create = require('../lib/nikko-create');
+var create = require('../plugins/nikko-create');
 
 program
   .option('-t, --target-directory [directory]', 'Target directory', process.env.PWD)
