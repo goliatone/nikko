@@ -9,7 +9,7 @@ var chalk = require('chalk');
 var nikko = require('..');
 var program = require('commander');
 
-var pkg = require('../package.json');
+var pkg = require(nikko.packagePath);
 
 var plugins = pkg.plugins;
 
