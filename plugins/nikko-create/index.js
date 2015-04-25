@@ -7,12 +7,12 @@ var exists = require('../../lib/utils/exists').sync;
 module.exports = function action(options){
 
     console.log('Creating a new blog');
-    console.log('- Target directory: ', options.directory);
+    console.log('- Target directory: ', options.target);
     console.log('- Template: ', options.blueprint);
     console.log('- Name: ', options.name);
     console.log('- force: ', options.force);
 
-    var target = path.join(options.directory, options.name);
+    var target = path.join(options.target, options.name);
     var blueprint = options.blueprint;
     prepare(target, options);
     move(target, blueprint, options);
