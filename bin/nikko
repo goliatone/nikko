@@ -29,13 +29,12 @@ program.option('-c, --config <path>', 'configuration file location', 'librarian.
  * Examples
  */
 program.on('--help', function(){
-    console.log('\tExamples:');
+    console.log('  Examples:');
+    console.log('  #build from librarian.json:');
+    console.log('    $ nikko build');
     console.log();
-    console.log('\t#build from librarian.json:');
-    console.log('\t$ lbr');
-    console.log();
-    console.log('\t#build from lib/config.json:');
-    console.log('\t$ nikko build --config lib/config.json');
+    console.log('  #build from lib/config.json:');
+    console.log('    $ nikko build --config lib/config.json');
     console.log();
 });
 
