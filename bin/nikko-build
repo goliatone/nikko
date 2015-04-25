@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var build = require('../lib/nikko-build');
+var build = require('../plugins/nikko-build');
 var extend = require('gextend');
 
 program
@@ -19,12 +19,6 @@ program
 
 var nikko = require('../lib');
 nikko.execute('build', {
-    force: program.force,
-    source: program.source
-});
-return
-
-build({
     force: program.force,
     source: program.source
 });
