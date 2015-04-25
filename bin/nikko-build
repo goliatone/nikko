@@ -1,24 +1,16 @@
 #!/usr/bin/env node
 
+var Nikko = require('../lib');
 var program = require('commander');
-var build = require('../plugins/nikko-build');
-var extend = require('gextend');
 
 program
-  .option('-f, --force', 'force build')
-  .option('-s, --source [directory]', 'Source directory')
-  .parse(process.argv);
+    .option('-f, --force', 'force build')
+    .option('-s, --source [directory]', 'Source directory')
+    .parse(process.argv);
 
 
 
-// var rcconfig = require('rc')('nikko', {}, process.argv);
-// var config = extend({}, rcconfig.build);
-// build(config)
-// return
+var flags = Nikko.extract(program, ['force', 'source']);
+
 // nikko build -s /tmp/pepe
-
-var nikko = require('../lib');
-nikko.execute('build', {
-    force: program.force,
-    source: program.source
-});
+Nikko.execute('build', flags);
