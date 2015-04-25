@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var Nikko = require('../lib');
+var program = require('commander');
+
+
+program
+    .option('-f, --force', 'force installation')
+    .parse(process.argv);
+
+var name = program.args[0] || 'sites';
+
+//Extract flags from program:
+var flags = Nikko.extract(program, ['force']);
+flags.item = name;
+
+//Execute command!
+Nikko.execute('list', flags);
