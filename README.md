@@ -66,6 +66,18 @@ The plugin will be registered in the package.json/.nikkorc config file
 
 ## Blueprints
 Skeleton of a site, which content is compiled against generating the static output.
+Blueprints should provide info on which directories are targets for:
+- `new`: ie _posts
+- `build`: -s src 
+
+We should be able to install blueprints.
+
+## RC
+* build: 
+    - '-s, --source [directory]', 'Source directory'
+* create:
+    - '-t, --target-directory [directory]', 'Target directory'
+    - '-T, --template [template]', 'Template', 'default' <= rename to -b --blueprint
 
 ## Themes
 How do we decouple themes from blueprints? We should be able to install both independently.
