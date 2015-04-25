@@ -22,7 +22,7 @@ Serves a preview site on port **9393** by default. It will watch the **src** dir
 ## Examples
 _(Coming soon)_
 
-## Todo
+## TODO
 
 Commands:
 create => new
@@ -50,6 +50,8 @@ We should be able to config rc
 
 TODO: move commands to plugins directory instead of lib
 
+Post install: it should install default plugins and template.
+
 ## Plugins
 Installed globally, available to the global nikko instance.
 Each plugin should be published as a separate npm module.
@@ -70,7 +72,8 @@ Blueprints should provide info on which directories are targets for:
 - `new`: ie _posts
 - `build`: -s src 
 
-We should be able to install blueprints.
+* We should be able to install blueprints.
+* We should be able to use zip/tar blueprints.
 
 ## RC
 * build: 
