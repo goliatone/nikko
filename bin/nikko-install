@@ -17,5 +17,6 @@ if (!pkgs.length) {
 //and change it with regexp so that it works also as standalone?
 var nikko = require('../lib');
 nikko.execute('install', {
-    packages: pkgs
+    packages: pkgs,
+    installDir:nikko.pluginPath
 });
