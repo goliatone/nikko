@@ -2,17 +2,17 @@ var inquirer = require('inquirer');
 var path = require('path');
 var fs = require('fs');
 var Handlebars = require('handlebars');
-var exists = require('../lib/utils/exists').sync;
+var exists = require('../../lib/utils/exists').sync;
 
 var questions = require(path.join(__dirname, 'templates', 'post', 'questions'));
 
 
 module.exports = function nikkoNew(options){
-
+console.log(options)
     if(options.interactive) return makeInteractive(options);
 
     //TODO: How do we handle errors?
-    if(!options.interactive && !options.dataPath){
+    if(!options.interactive && !options.data){
         console.error('data path required');
         process.exit(1);
     }
@@ -22,7 +22,7 @@ module.exports = function nikkoNew(options){
 
 
 function loadData(options){
-    var filepath = path.join(path.resolve(options.dataPath));
+    var filepath = path.join(path.resolve(options.data));
     var source = fs.readFileSync(filepath, 'utf8');
 
     var data;
@@ -46,7 +46,7 @@ function generateFile(options, data){
         var filepath = path.resolve(options.output);
         filepath = path.join(filepath, basename);
 
-        if(exists(filepath) && !options.force) throw new Error('File '+filepath+' already exists');
+        if(exists(filepath) && !options.force) throw new Error('File ' + filepath + ' already exists');
 
         fs.writeFileSync(filepath, result);
 
