@@ -1,5 +1,4 @@
 --harmony-generators
 --reporter spec
---require co-mocha
 --slow 500
 --bail
