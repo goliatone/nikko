@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
+var Nikko = require('../lib');
 var program = require('commander');
-var nikkoNew = require('../plugins/nikko-new');
+
 
 /*
  * TODO: We should have a context
@@ -16,17 +17,14 @@ var nikkoNew = require('../plugins/nikko-new');
 program
   .option('-t, --template <template>', 'force installation', 'post')
   .option('-i, --interactive', 'Interactive data generation')
-  .option('-d, --data-path <path>', 'Path to data file')
+  .option('-d, --data <path>', 'Path to data file')
   .option('-f, --force', 'Overwrite a file that exists with same name')
-  .option('-o, --output-path <path>', 'Output path', process.env.PWD)
+  .option('-o, --output <path>', 'Output path', process.env.PWD)
   .option('-e, --exec <command>', 'Execute command after')
   .parse(process.argv);
 
+var flags = Nikko.extract(program, ['force', 'template',
+    'interactive', 'data', 'output', 'exec']);
+
 // nikko new -i -o /tmp/nikko.com/src/_posts/
-nikkoNew({
-    template: program.template,
-    interactive: program.interactive,
-    data: program.dataPath,
-    force: program.force,
-    output: program.outputPath
-});
+Nikko.execute('new', flags);
