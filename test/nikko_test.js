@@ -1,36 +1,16 @@
 'use strict';
 
-var nikko = require('../lib/nikko.js');
+var assert = require('chai').assert;
+var fs = require('fs');
+var path = require('path');
+var Mode = require('stat-mode');
+var rm = require('rimraf').sync;
+var equal = require('assert-dir-equal');
+var exec = require('child_process').exec;
+var fixture = path.resolve.bind(path, __dirname, 'fixtures');
 
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
+var Nikko = require('../');
 
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
-*/
+describe('Nikko', function(){
 
-exports['awesome'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
-  'no args': function(test) {
-    test.expect(1);
-    // tests here
-    test.equal(nikko.awesome(), 'awesome', 'should be awesome.');
-    test.done();
-  },
-};
+});
