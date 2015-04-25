@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var Nikko = require('../lib');
 var program = require('commander');
 
 program
@@ -13,10 +14,7 @@ if (!pkgs.length) {
   process.exit(1);
 }
 
-//TODO: we could create this dynamically? Or process the content
-//and change it with regexp so that it works also as standalone?
-var nikko = require('../lib');
-nikko.execute('install', {
+Nikko.execute('install', {
     packages: pkgs,
-    installDir:nikko.pluginPath
+    installDir: Nikko.pluginPath
 });
