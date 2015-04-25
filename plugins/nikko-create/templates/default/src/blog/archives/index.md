@@ -1,3 +1,0 @@
----
-template: blog/archives.hbs
----
