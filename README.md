@@ -48,7 +48,8 @@ We should be able to list all projects locally
 
 We should be able to config rc
 
-TODO: move commands to plugins directory instead of lib
+~~TODO: move commands to plugins directory instead of lib~~
+TODO: `serve` should integrate localtunnel or ngrok
 
 Post install: it should install default plugins and template.
 
