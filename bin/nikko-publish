@@ -4,5 +4,9 @@
 
 if (true) {
   var info = 'publish';
-  console.log(info)
+  console.log(info);
 }
+
+var Nikko = require('..');
+var nikko = new Nikko
+nikko.registerPlugin('nikko-list');
