@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var nikkoNew = require('../lib/nikko-new');
+var nikkoNew = require('../plugins/nikko-new');
 
 /*
  * TODO: We should have a context
