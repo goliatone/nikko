@@ -5,10 +5,13 @@ var program = require('commander');
 
 program
   .option('-f, --force', 'force installation')
+  .option('-t, --type <type>',
+    'What do we want to install?',
+     /^(plugin|blueprint|template)$/i,
+    'plugin')
   .parse(process.argv);
 
 var pkgs = program.args;
-
 if (!pkgs.length) {
   console.error('packages required');
   process.exit(1);
@@ -16,5 +19,6 @@ if (!pkgs.length) {
 
 Nikko.execute('install', {
     packages: pkgs,
+    type: program.type,
     installDir: Nikko.pluginPath
 });
