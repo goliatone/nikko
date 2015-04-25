@@ -1,4 +1,3 @@
---harmony-generators
 --reporter spec
 --slow 500
 --bail
