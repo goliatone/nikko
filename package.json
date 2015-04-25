@@ -29,13 +29,18 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "./node_modules/mocha/bin/mocha test/*_test.js",
+    "dtest": "./node_modules/mocha/bin/mocha test/*_test.js -G -w --reporter spec --slow 500"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-contrib-watch": "~0.2.0",
-    "grunt": "~0.4.5"
+    "mocha-sinon": "^1.1.4",
+    "mocha-clean": "^0.4.0",
+    "assert-dir-equal": "^1.0.1",
+    "chai": "^2.2.0",
+    "sinon": "^1.14.1",
+    "mocha": "^2.2.4",
+    "stat-mode": "^0.2.1",
+    "rimraf": "^2.3.2"
   },
   "keywords": [],
   "dependencies": {
@@ -52,7 +57,7 @@
     "open": "0.0.5",
     "connect": "^3.3.5",
     "serve-index": "^1.6.3",
-    "instant": "goliatone/instant.git#3d26e2d",
+    "instant": "github:goliatone/instant#3d26e2d",
     "inquirer": "^0.8.2",
     "handlebars": "^3.0.1",
     "gaze": "^0.5.1",
