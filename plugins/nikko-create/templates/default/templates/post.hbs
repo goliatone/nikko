@@ -1,0 +1,51 @@
+{{> header}}
+<main class="post">
+    <header >
+        <h1>{{this.title}}</h1>
+        <time datetime="{{this.date}}">{{shortDate this.date}}</time>
+    </header>
+    <!-- @POST CONTENTS -->
+    <article>
+        {{{contents}}}
+        <hr class="divider"/>
+        {{!-- &#9830; --}}
+    </article>
+    <!-- @POST CONTENTS END -->
+
+    {{#if this.tags}}
+    <div class="post-meta">
+        <p>
+            Found under:
+            {{#each this.tags}}
+                <span class="label label-light blog-list-tag">
+                    <a href="/blog/tags/{{this}}" alt="{{ this }}" title="{{ this }}">{{this}}</a>
+                </span>
+            {{/each}}
+        </p>
+    </div>
+    {{/if}}
+
+    <aside>
+        <h5>Read more articles:</h5>
+
+        <div class="previous">
+        {{#if previous }}
+            <p>
+                <a href="{{ previous.url }}">{{ previous.title }}</a>
+            </p>
+        {{/if}}
+        </div>
+
+        <div class="next">
+        {{#if next }}
+            <p>
+                <a href="{{ next.url }}">{{ next.title }}</a>
+            </p>
+        {{/if}}
+        </div>
+
+        {{> archive-list}}
+    </aside>
+</main>
+
+{{> footer}}

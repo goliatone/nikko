@@ -1,0 +1,12 @@
+{{> header}}
+{{> header-title}}
+<main class="tag">
+    <h2>Tag: #{{tag}}</h2>
+
+    {{#each posts}}
+        {{> posts-list-item }}
+    {{/each}}
+
+</main>
+
+{{> footer }}

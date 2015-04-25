@@ -1,0 +1,72 @@
+{
+    "metadata": {
+        "title": "Goliatone",
+        "description": "Notes for here and beyond"
+    },
+    "destination":"./site",
+    "plugins":{
+        "./lib/hbs-partials":{
+            "partials": "_partials"
+        },
+        "metalsmith-define": {
+            "meta":{
+                "blog": {
+                    "uri": "http://goliatone.com",
+                    "title": "Goliatone",
+                    "subtitle": "Notes for self and beyond.",
+                    "description": "Goodbye Toto, nikko is here."
+                },
+                "owner": {
+                    "uri": "http://goliatone.com",
+                    "name": "Goliatone"
+                }
+            }
+        },
+        "metalsmith-collections":{
+            "blog": {
+                "pattern":"_posts/*.md",
+                "sortBy": "date",
+                "reverse": true
+            },
+            "projects": {
+                "pattern": "projects/_posts/*.html",
+                "sortBy": "date",
+                "reverse": true
+            }
+        },
+        "metalsmith-tags":{
+            "handle"  : "tags",
+            "path"    : "blog/tags",
+            "template": "./blog/tag.hbs",
+            "sortBy"  : "date",
+            "reverse" : true
+        },
+        "./lib/appendMetadata":{
+            "datePattern": "YYYY/MM/DD"
+        },
+        "metalsmith-markdown":{
+
+        },
+        "metalsmith-permalinks":{
+            "pattern": ":collection/:date/:title",
+            "date": "YYYY/MM/DD"
+        },
+        "metalsmith-snippet":{
+            "maxLength": 250,
+            "suffix"   : "..."
+        },
+        "metalsmith-templates":{
+            "engine": "handlebars"
+        },
+        "metalsmith-assets":{
+            "source": "./public",
+            "destination": "./assets"
+        },
+        "metalsmith-clean-css":{
+            "files": "**/*.css",
+            "cleanCSS": {
+                "rebase": true
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<section class="article-list">
+    <h2>Articles</h2>
+
+    <ol>
+        {{#each collections.blog}}
+            <li>
+                <a href="{{this.url}}" alt="{{this.title}}" title="{{ this.title }}">
+                    <h3>{{this.title}}</h3>
+                </a>
+                {{!-- <time datetime="{{this.date}}">{{shortDate this.date}}</time> --}}
+            </li>
+        {{/each}}
+    </ol>
+</section>
