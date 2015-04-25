@@ -8,14 +8,14 @@ module.exports = function action(options){
 
     console.log('Creating a new blog');
     console.log('- Target directory: ', options.directory);
-    console.log('- Template: ', options.template);
+    console.log('- Template: ', options.blueprint);
     console.log('- Name: ', options.name);
     console.log('- force: ', options.force);
 
     var target = path.join(options.directory, options.name);
-    var template = options.template;
+    var blueprint = options.blueprint;
     prepare(target, options);
-    move(target, template, options);
+    move(target, blueprint, options);
 }
 
 
@@ -34,14 +34,14 @@ function prepare(target, options){
     fs.mkdirsSync(target);
 }
 
-function move(target, templateName, options){
-    var template = path.resolve(path.join(__dirname, 'templates', templateName));
+function move(target, blueprintName, options){
+    var blueprint = path.resolve(path.join(__dirname, 'templates', blueprintName));
 
-    if(!exists(template)) {
-        var msg = 'The template ## was not found'.replace('##', target);
+    if(!exists(blueprint)) {
+        var msg = 'The blueprint ## was not found'.replace('##', target);
         console.error(chalk.red('\nnikko create') + chalk.gray(': ') + msg);
         process.exit(1);
     }
 
-    fs.copySync(template, target);
+    fs.copySync(blueprint, target);
 }
