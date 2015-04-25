@@ -11,24 +11,14 @@ var program = require('commander');
 
 var pkg = require('../package.json');
 
-var plugins = {
-    "plugins":[
-        {"name": 'create', "description": ['create [name]', 'Create new blog']},
-        {"name": 'new', "description":['new [name]', 'Create new post']},
-        {"name": 'serve', "description":['serve', 'Serve']},
-        {"name": 'build', "description":['build', 'Build']},
-        {"name": 'publish', "description":['publish', 'Publish the package']},
-        {"name": 'install', "description":['install', 'Install plugin']},
-        {"name": 'list', "description":['list', 'List plugin']}
-    ]
-};
+var plugins = pkg.plugins;
 
 /**
  * Usage
  */
 program.version(pkg.version);
 
-plugins.plugins.forEach(function(plg){
+plugins.forEach(function(plg){
     var command = plg.description;
     program.command.apply(program, command);
 });
