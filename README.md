@@ -50,6 +50,20 @@ We should be able to config rc
 
 TODO: move commands to plugins directory instead of lib
 
+## Plugins
+Installed globally, available to the global nikko instance.
+Each plugin should be published as a separate npm module.
+It should have a predefined directory layout:
+
+- nikko-{plugin}
+    | bin -> nikko-{plugin}
+    | index.js
+
+It will be copied over to the `plugins` directory.
+The bin file will be included in the `bin` directory.
+The plugin will be registered in the package.json/.nikkorc config file
+
+
 ## Blueprints
 Skeleton of a site, which content is compiled against generating the static output.
 
