@@ -64,6 +64,58 @@
     "rc": "^1.0.1",
     "npmi": "^1.0.1",
     "readjson": "^1.0.2",
-    "read-package-json": "^2.0.0"
-  }
+    "read-package-json": "^2.0.0",
+    "ini": "^1.3.3"
+  },
+  "plugins": [
+    {
+      "name": "create",
+      "description": [
+        "create [name]",
+        "Create new blog"
+      ]
+    },
+    {
+      "name": "new",
+      "description": [
+        "new [name]",
+        "Create new post"
+      ]
+    },
+    {
+      "name": "serve",
+      "description": [
+        "serve",
+        "Serve"
+      ]
+    },
+    {
+      "name": "build",
+      "description": [
+        "build",
+        "Build"
+      ]
+    },
+    {
+      "name": "publish",
+      "description": [
+        "publish",
+        "Publish the package"
+      ]
+    },
+    {
+      "name": "install",
+      "description": [
+        "install",
+        "Install plugin"
+      ]
+    },
+    {
+      "name": "list",
+      "description": [
+        "list",
+        "List plugin"
+      ]
+    }
+  ]
 }
