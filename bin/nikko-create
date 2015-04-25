@@ -12,8 +12,6 @@
  *     - questions.js => interactive
  *     - template/ => all content
  */
-
-
 // https://www.npmjs.com/package/promptly
 // https://github.com/SBoudrias/Inquirer.js
 var program = require('commander');
@@ -22,6 +20,7 @@ var create = require('../plugins/nikko-create');
 program
   .option('-t, --target-directory [directory]', 'Target directory', process.env.PWD)
   .option('-T, --template [template]', 'Template', 'default')
+  .option('-b, --blueprint [template]', 'Template', 'default')
   .option('-f, --force', 'Force to create on non empty dir')
   .parse(process.argv);
 
@@ -38,5 +37,6 @@ create({
     name: name,
     directory: program.targetDirectory,
     template: program.template,
+    blueprint: program.blueprint,
     force: program.force
 });
