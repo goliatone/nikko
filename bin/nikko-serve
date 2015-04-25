@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var server = require('../lib/nikko-serve');
+var server = require('../plugins/nikko-serve');
 
 //nikko serve -d /tmp/nikko.com/site/ -o -w /tmp/nikko.com/src/ -e "nikko build -s /tmp/nikko.com"
 program
