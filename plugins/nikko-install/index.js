@@ -10,11 +10,13 @@ var path = require('path');
  */
 module.exports = function install(config, nikko){
 
+    var manager = new Installer(nikko);
+
     var packages = config.packages;
 
     packages.forEach(function(packageId){
         console.log('  install : %s', packageId);
-        installPackage({
+        manager.install({
             name: packageId,
             path: nikko.basePath,
             npmLoad: {
@@ -24,7 +26,13 @@ module.exports = function install(config, nikko){
     });
 };
 
-function doInstall(pluginId){
+function Installer(nikko){
+    this.nikko = nikko;
+}
+
+Installer.prototype.register = function(pluginId){
+
+    var nikko = this.nikko;
 
     var plugSource = path.resolve(path.join(nikko.basePath, 'node_modules', pluginId));
     var plugTarget = path.join(nikko.pluginPath, pluginId);
@@ -32,7 +40,8 @@ function doInstall(pluginId){
     var binSource = path.join(plugSource, 'bin', pluginId);
     var binTarget = path.join(nikko.binPath, pluginId);
 
-    fx.move(binSource, binTarget, function (err) {
+    //TODO: fx.copy and on pluginRegistered fx.delete
+    fx.copy(binSource, binTarget, function (err) {
         if (err){
             if(err.code === 'ENOENT'){
                 nikko.logger.error('nikko-install Error: the plugin was not found on the node_modules. Are you sure npm was successful?');
@@ -43,18 +52,24 @@ function doInstall(pluginId){
 
         fx.chmodSync(binTarget, 0755);
 
-        fx.move(plugSource, plugTarget, function (err) {
+        //TODO: fx.copy and on pluginRegistered fx.delete
+        fx.copy(plugSource, plugTarget, function (err) {
             if (err) return console.error(err);
             console.log("success!");
             //We should get data from plugin... before we go!
+            nikko.on('plugin.registered.'+pluginId, function(){
+                console.log('WE SHOULD NOW DELETE FOLDERS', arguments);
+                fx.removeSync(binSource);
+                fx.removeSync(plugSource);
+            });
             nikko.registerPlugin(pluginId);
         });
     });
 }
 
-function installPackage(options){
+Installer.prototype.install = function(options){
     console.log('WARNING! NPM INSTALL DISABLED DEBUGGING ======')
-    doInstall(options.name);
+    this.register(options.name);
     console.log('WARNING! NPM INSTALL DISABLED DEBUGGING ======')
     return
 
@@ -69,6 +84,6 @@ function installPackage(options){
         var pluginPath = path.resolve(options.path);
         console.log(options.name+'@'+options.version+' installed successfully in '+ pluginPath);
 
-        doInstall(options.name);
-    });
-}
+        this.register(options.name);
+    }.bind(this));
+};
