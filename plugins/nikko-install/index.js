@@ -82,7 +82,7 @@ Installer.prototype.install = function(options){
 
         // installed
         var pluginPath = path.resolve(options.path);
-        console.log(options.name+'@'+options.version+' installed successfully in '+ pluginPath);
+        console.log(options.name + '@' + options.version + ' installed successfully in ' + pluginPath);
 
         this.register(options.name);
     }.bind(this));
