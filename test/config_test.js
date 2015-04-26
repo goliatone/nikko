@@ -1,7 +1,7 @@
 'use strict';
 
 var assert = require('chai').assert;
-var sinon = require("sinon");
+var sinon = require('sinon');
 var fs = require('fs');
 var path = require('path');
 var Mode = require('stat-mode');
@@ -9,8 +9,11 @@ var rm = require('rimraf').sync;
 var equal = require('assert-dir-equal');
 var exec = require('child_process').exec;
 var fixture = path.resolve.bind(path, __dirname, 'fixtures');
+var ini = require('ini');
 
 var Config = require('../lib/utils/config');
+
+Config.DEFAULTS.baseName = 'config_test';
 
 sinon.assert.expose(assert, { prefix: "" });
 
@@ -55,6 +58,21 @@ describe('Config', function(){
             });
             config.load();
             assert.equal(config.config, expected);
+        });
+
+        it('should load a config object', function(done){
+            var expected = {a: 1, b: 2, c: 3};
+            var config = new Config({
+                config: expected,
+                defaultTarget: fixture('write')
+            });
+
+            config.write();
+
+            fs.readFile(fixture('write', 'expected.ini'), 'utf-8', function(err, data){
+                assert.ok(expected, ini.parse(data));
+                done();
+            });
         });
 
         xit('should set "baseName" if provided', function(){
@@ -107,6 +125,7 @@ describe('Config', function(){
             var config = new Config({
                 config: {a: 1, b: 2, c: 3},
                 deleteOnWrite: ['b', 'c'],
+                defaultTarget: fixture('write'),
                 writeFile: function(_, output){
                     assert.ok(output, expected);
                 }
@@ -118,6 +137,7 @@ describe('Config', function(){
             var expected = {a: 1, b: 2, c: 3};
             var config = new Config({
                 config: expected,
+                defaultTarget: fixture('write'),
                 configStringify: function(output){
                     assert.ok(output, expected);
                 }
@@ -125,15 +145,19 @@ describe('Config', function(){
             config.write();
         });
 
-        xit('should generate expected file format', function(){
+        it('should generate expected file format', function(done){
             var expected = {a: 1, b: 2, c: 3};
             var config = new Config({
                 config: expected,
-                configStringify: function(output){
-                    assert.ok(output, expected);
-                }
+                defaultTarget: fixture('write')
             });
+
             config.write();
+
+            fs.readFile(fixture('write', 'expected.ini'), 'utf-8', function(err, data){
+                assert.ok(expected, ini.parse(data));
+                done();
+            });
         });
     });
 
@@ -143,11 +167,13 @@ describe('Config', function(){
             var expected = path.join(config.defaultTarget, config.filename);
             assert.ok(config.getOutputPath(), expected);
         });
+
         it('should use getOutputPath to determine where to write', function(){
             var config = new Config();
             var spy = sinon.spy(config, 'getOutputPath');
             config.write('target');
             assert.calledOnce(spy);
         });
+
     });
 });
