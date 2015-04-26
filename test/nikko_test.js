@@ -80,12 +80,11 @@ describe('Nikko', function(){
             Nikko.prototype.init.restore();
         });
 
-        it.only('should create paths', function(){
-            var nikko = Nikko;
-            assert.isString(nikko.basePath)
-            // ['basePath', 'binPath', 'pluginPath', 'modulePath'].forEach(function(prop){
-            //     assert.isString(nikko[prop], prop + ' not defined');
-            // });
+        it('should create paths', function(){
+            var nikko = new Nikko;
+            ['basePath', 'binPath', 'pluginPath', 'modulePath'].forEach(function(prop){
+                assert.isString(nikko[prop], prop + ' not defined');
+            });
         });
     });
 });
