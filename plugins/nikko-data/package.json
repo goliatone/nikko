@@ -1,0 +1,39 @@
+{
+  "name": "nikko-data",
+  "description": "Generate JSON from front-matter and vice-versa",
+  "version": "0.0.1",
+  "homepage": "https://github.com/goliatone/nikko-data",
+  "author": {
+    "name": "goliatone",
+    "email": "hello@goliatone.com",
+    "url": "http://goliatone.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goliatone/nikko-data.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goliatone/nikko-data/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/goliatone/nikko-data/blob/master/LICENSE-MIT"
+    }
+  ],
+  "bin": {
+    "nikko": "bin/nikko-data"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "keywords": [],
+  "dependencies": {
+    "globby": "^2.0.0",
+    "gray-matter": "^2.0.0",
+    "assert-is": "*",
+    "hash-anything": "^1.0.4",
+    "xxhash": "^0.2.2"
+  }
+}
