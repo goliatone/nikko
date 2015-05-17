@@ -118,6 +118,13 @@
         "list",
         "List plugin"
       ]
+    },
+    {
+      "name": "data",
+      "description": [
+        "data",
+        "Generate JSON from front-matter, and vice-versa"
+      ]
     }
   ]
 }
