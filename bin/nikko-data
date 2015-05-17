@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+var Nikko = require('../lib');
+var program = require('commander');
+
+// patterns: ['*.md'],
+//     source: process.cwd()
+//     output
+program
+    .option('-f, --force', 'force build')
+    .option('-p, --patterns <patterns>', 'List of patterns')
+    .option('-o, --output [output file]', 'Output file path')
+    .option('-s, --source [directory]', 'Source directory')
+
+    .option('-r, --rootpath [root path]', 'Target directory to output files')
+    .option('-t, --filepath [root path]', 'Source JSON file')
+    .parse(process.argv);
+
+
+var options = ['force', 'source', 'patterns', 'output'];
+options = options.concat(['filepath', 'rootpath']);
+console.log(options)
+var flags = Nikko.extract(program, options);
+
+// nikko build -s /tmp/pepe
+Nikko.execute('data', flags);
