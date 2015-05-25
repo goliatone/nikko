@@ -34,6 +34,7 @@
     "gray-matter": "^2.0.0",
     "assert-is": "*",
     "hash-anything": "^1.0.4",
-    "xxhash": "^0.2.2"
+    "xxhash": "^0.2.2",
+    "expand-tilde": "^1.2.0"
   }
 }
