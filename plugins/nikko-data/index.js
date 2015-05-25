@@ -1,19 +1,18 @@
 
-
+var commands = {
+    json:'./json2matter',
+    matter: './matter2json'
+};
 
 module.exports = function data(options, nikko){
-    console.log('DATA', options);
-    //Matter 2 JSON
-    //patterns
-    //input dir
-    //json output
-    var module = './matter2json';
+    var module = commands[options.command];
 
-    //JSON 2 Matter
-    //json input
-    //output dir
-    module = './json2matter';
+    if(!module){
+        var msg = 'Data plugin: command '+options.command+' not recognized';
+        return nikko.onError(new Error(msg));
+    }
 
     var execute = require(module);
-    execute(options);
+
+    execute(options, nikko);
 };
