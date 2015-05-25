@@ -1,35 +1,38 @@
 var globby = require('globby');
 var matter = require('gray-matter');
-var resolve = require('path').resolve;
+
 var join = require('path').join;
+var resolve = require('path').resolve;
+var expand = require('expand-tilde');
+
 var assertis = require('assert-is');
+var extend = require('gextend');
 
 var hasher = getHaser();
 
-var config = {
+var DEFAULTS = {
     patterns: ['*.md'],
     source: process.cwd(),
     output: join(process.cwd(), 'matter.json')
 };
 
-module.exports = function matter2Json(options){
+//nikko data matter -r ./gen -t ./jj.json
+module.exports = function matter2Json(options, nikko){
+    options = extend({}, DEFAULTS, options);
 
-    options.patterns = options.patterns || config.patterns;
-    //We might actually want to save the relative path
+    //TODO: We might actually want to save the relative path
     //to the project, so that we can move the same config
     //around
-    options.source = options.source ? resolve(options.source) : config.source;
-
-    options.output = options.output || config.output;
+    options.source = normalize(options.source);
+    options.output = normalize(options.output);
 
     var out =[];
 
     var done = function(err){
-        if(err) return console.log(err);
-        console.log('DONE');
-    }
+        if(err) return nikko.onError(err);
+    };
 
-    globby( config.patterns, {
+    globby( options.patterns, {
         cwd: options.source
     }, function(err, paths){
         console.log(paths);
@@ -58,6 +61,11 @@ module.exports = function matter2Json(options){
     });
 };
 
+function normalize(filepath){
+    filepath = resolve(filepath);
+    filepath = expand(filepath);
+    return filepath;
+}
 
 function getHaser(){
     //TODO: Think hasher strategy
