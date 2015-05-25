@@ -8,19 +8,29 @@ var program = require('commander');
 //     output
 program
     .option('-f, --force', 'force build')
-    .option('-p, --patterns <patterns>', 'List of patterns')
-    .option('-o, --output [output file]', 'Output file path')
-    .option('-s, --source [directory]', 'Source directory')
 
-    .option('-r, --rootpath [root path]', 'Target directory to output files')
-    .option('-t, --filepath [root path]', 'Source JSON file')
+    //matter
+    .option('-p, --patterns <patterns>', 'List of patterns')
+    .option('-o, --output <output file>', 'Output file path')
+    .option('-r, --rootpath <root path>', 'Target directory to output files')
+
+    //json
+    .option('-s, --source <directory>', 'Source directory')
+    .option('-t, --filepath <root path>', 'Target for generated JSON file')
     .parse(process.argv);
 
 
 var options = ['force', 'source', 'patterns', 'output'];
-options = options.concat(['filepath', 'rootpath']);
-console.log(options)
+
 var flags = Nikko.extract(program, options);
+
+var command = program.args[0];
+if(['matter', 'json'].indexOf(command) === -1 ){
+    console.log('You need to specify an action: matter or json');
+    process.exit(1);
+}
+
+flags.command = command;
 
 // nikko build -s /tmp/pepe
 Nikko.execute('data', flags);
